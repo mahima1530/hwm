@@ -1,0 +1,64 @@
+package com.homeofficevisa.pages;
+
+import com.homeofficevisa.utility.Utility;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
+
+
+/*
+6.FamilyImmigrationStatusPage - nextStepButton, yes, no locators and create methods 'void
+selectImmigrationStatus(String status)'
+(Note: Use switch statement for select immigration status) and 'void clickNextStepButton()'
+
+ */
+
+public class FamilyImmigrationStatusPage extends Utility {
+
+ private static final Logger log = LogManager.getLogger(FamilyImmigrationStatusPage.class.getName());
+
+    public FamilyImmigrationStatusPage() {
+        PageFactory.initElements(driver, this);
+    }// error to come alert
+
+     @CacheLookup
+            @FindBy nextStepButtonYes =By.cssSelector("#response-0");
+             WebElement nextStepButtonYes;
+
+     @CacheLookup
+            @FindBy nextStepButtonNo = By.cssSelector("#response-1");
+             WebElement nextStepButtonNo;
+
+     @CacheLookup
+            @FindBy nextStepButton = By.cssSelector("button[class='gem-c-button govuk-button gem-c-button--bottom-margin']");
+     WebElement nextStepButton;
+
+ @CacheLookup
+        @FindBy selectOption = By.className("govuk-radios");
+ WebElement  selectOption;
+
+    public void selectImmigrationStatus(String status) {
+        List<WebElement> option = driver.findElements(selectOption);
+        String s = option.toString();
+        switch (status) {
+            case "Yes":
+                s.equals(status);
+                clickOnElement(nextStepButtonYes);
+                break;
+
+
+            default:
+                clickOnElement(nextStepButtonNo);
+                break;
+        }
+
+
+        }
+        public void clickNextStepButton(){
+
+        clickOnElement(nextStepButton);
+
+
+               }
+    }

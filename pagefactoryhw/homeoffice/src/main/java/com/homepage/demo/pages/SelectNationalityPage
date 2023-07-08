@@ -1,0 +1,46 @@
+package com.homeofficevisa.pages;
+
+import com.homeofficevisa.utility.Utility;
+import org.openqa.selenium.By;
+import org.testng.Reporter;
+
+
+/*
+3.SelectNationalityPage -nationalityDropDownList, nextStepButton locators and create
+methods 'void selectNationality(String nationality)'
+and 'void clickNextStepButton()'
+ */
+public class SelectNationalityPage extends Utility {
+private static final Logger log = LogManager.getLogger(SelectNationalityPage.class.getName());
+
+    public SelectNationalityPage() {
+        PageFactory.initElements(driver, this);
+    }// error to come alert
+
+    // By nationalityDropDownList = By.cssSelector("select[id='response']");
+
+    @CacheLookup
+                @FindBy nationalityDropDownList = By.cssSelector("#response");
+                 WebElement nationalityDropDownList;
+
+
+    @CacheLookup
+                @FindBy nextStepButton = By.cssSelector("#button[class='gem-c-button govuk-button gem-c-button--bottom-margin']");
+                WebElement nextStepButton;
+
+
+    public void selectNationality(String Nationality){
+
+        Reporter.log("Nationality");
+        selectByVisibleTextFromDropDown(nationalityDropDownList,Nationality);
+
+    }
+
+    public void clickNextStepButton() throws InterruptedException {
+        Thread.sleep(3000);
+        clickOnElement(nextStepButton);
+
+
+    }
+
+}

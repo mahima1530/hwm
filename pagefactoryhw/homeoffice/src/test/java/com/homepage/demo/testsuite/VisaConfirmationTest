@@ -1,0 +1,40 @@
+package com.homeofficevisa.testsuite;
+
+import com.homeofficevisa.pages.*;
+import com.homeofficevisa.testbase.TestBase;
+import org.testng.annotations.Test;
+
+/*
+1.VisaConfirmationTest
+Inside VisaConfirmationTest class create following testmethods
+1.anAustralianCominToUKForTourism().
+Click on start button
+Select a Nationality 'Australia'
+
+Click on Continue button
+Select reason 'Tourism'
+Click on Continue button
+verify result 'You will not need a visa to come to the UK'
+ */
+public class VisaConfirmationTest extends TestBase {
+    StartPage startPage = new StartPage();
+    SelectNationalityPage selectNationalityPage = new SelectNationalityPage();
+    ReasonForTravelPage reasonForTravelPage = new ReasonForTravelPage();
+    ResultPage resultPage = new ResultPage();
+    WorkTypePage workTypePage = new WorkTypePage();
+    DurationOfStayPage durationOfStayPage = new DurationOfStayPage();
+    FamilyImmigrationStatusPage familyImmigrationStatusPage = new FamilyImmigrationStatusPage();
+
+    @Test
+    public void anAustralianComingToUKForTourism() throws InterruptedException {
+        startPage.clickStartNow();
+        selectNationalityPage.selectNationality("Australia");
+        selectNationalityPage.clickNextStepButton();
+        reasonForTravelPage.selectReasonForVisit();
+        reasonForTravelPage.clickNextStepButton();
+        resultPage.confirmResultMessage("You will not need a visa to come to the UK");
+
+
+    }
+
+        }

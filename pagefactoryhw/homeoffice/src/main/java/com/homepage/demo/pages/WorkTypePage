@@ -1,0 +1,35 @@
+package com.homeofficevisa.pages;
+
+import com.homeofficevisa.utility.Utility;
+import org.openqa.selenium.By;
+
+/*
+2.WorkTypePage - nextStepButton, selectJobtypeList locators and create methods 'void selectJobType(String job)'
+and 'void clickNextStepButton()'
+
+ */
+
+public class WorkTypePage extends Utility {
+private static final Logger log = LogManager.getLogger(WorkTypePage.class.getName());
+
+    public WorkTypePage() {
+        PageFactory.initElements(driver, this);
+    }// error to come alert
+
+  @CacheLookup
+         @FindBy  nextStepButton = By.cssSelector("a[class='gem-c-button govuk-button govuk-button--start']");
+         WebElement  nextStepButton;
+
+    @CacheLookup
+           @FindBy  selectJobTypeList = By.cssSelector("#response-0");
+           WebElement selectJobTypeList;
+
+    public void selectJobType(String job){
+        clickOnElement(selectJobTypeList);
+
+    }
+
+    public void clickNextStepButton(){
+        clickOnElement(nextStepButton);
+    }
+}

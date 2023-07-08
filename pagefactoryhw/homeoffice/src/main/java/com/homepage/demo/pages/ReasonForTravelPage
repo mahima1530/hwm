@@ -1,0 +1,89 @@
+package com.homeofficevisa.pages;
+
+import com.homeofficevisa.utility.Utility;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+/*
+5.ReasonForTravelPage - nextStepButton, reasonForVisitList locators and create methods
+'void selectReasonForVisit(String reason)'
+ */
+public class ReasonForTravelPage extends Utility {
+
+private static final Logger log = LogManager.getLogger(ReasonForTravelPage.class.getName());
+
+    public ReasonForTravelPage() {
+        PageFactory.initElements(driver, this);
+    }// error to come alert
+
+    @CacheLookup
+            @FindBy nextStepButton = By.cssSelector("button[class='gem-c-button govuk-button govuk-button--start']"); //Click on start button
+            WebElement nextStepButton
+
+    @CacheLookup
+            @FindBy reasonForVisitList = By.cssSelector("input[id='response-0']"); //tourism
+            WebElement reasonForVisitList
+
+    @CacheLookup
+            @FindBy ReasonForVisitList1 = By.cssSelector("input[id='response-1']"); //Select a work
+             WebElement ReasonForVisitList1;
+
+    @CacheLookup
+            @FindBy nextStepButton1 = By.cssSelector("button[class='gem-c-button govuk-button gem-c-button--bottom-margin']");
+            WebElement nextStepButton1;
+
+
+    @CacheLookup
+            @FindBy ReasonForVisitList2 = By.cssSelector("input[id='response-4']");
+            WebElement ReasonForVisitList2;
+
+   @CacheLookup
+           @FindBy nextStepButton2 = By.cssSelector("button[class='gem-c-button govuk-button gem-c-button--bottom-margin']");
+            WebElement nextStepButton2;
+
+    public void selectReasonForVisit() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(200));
+        WebElement webElement;
+        webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(reasonForVisitList));
+        clickOnElement(reasonForVisitList);
+
+    }
+
+    public void clickNextStepButton() {
+
+        clickOnElement(nextStepButton);
+
+    }
+
+
+    public void selectReasonForVisit1() {
+
+        clickOnElement(ReasonForVisitList1);
+
+
+    }
+
+
+    public void clickNextStepButton1() {
+        clickOnElement(nextStepButton1);
+    }
+
+
+
+    public void setReasonForVisitList2() {
+
+        clickOnElement(ReasonForVisitList2);
+
+
+    }
+
+    public void clickNextStepButton2() {
+        clickOnElement(nextStepButton2);
+
+
+    }

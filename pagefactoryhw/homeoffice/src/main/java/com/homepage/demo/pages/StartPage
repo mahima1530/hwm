@@ -1,0 +1,33 @@
+package com.homeofficevisa.pages;
+
+import com.homeofficevisa.utility.Utility;
+import org.openqa.selenium.By;
+import org.testng.Reporter;
+
+/*
+In Pages package
+1.StartPage - startNowButton locatores and create method 'void clickStartNow()'
+ */
+public class StartPage extends Utility {
+private static final Logger log = LogManager.getLogger(StartPage.class.getName());
+
+    public StartPage() {
+        PageFactory.initElements(driver, this);
+    }// error to come alert
+
+
+     @CacheLookup
+        @FindBy  StartNowButton = By.cssSelector("a[class='gem-c-button govuk-button govuk-button--start']");
+        WebElement StartNowButton;
+
+     @CacheLookup
+         @FindBy  clickOnCookies = By.xpath("//div[@class='js-confirmation-buttons govuk-button-group']/button[1]");
+          WebElement    clickOnCookies;
+
+            public void clickStartNow(){
+                clickOnElement(clickOnCookies);
+                Reporter.log("click StartButton");
+                clickOnElement(StartNowButton);
+
+            }
+}

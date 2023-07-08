@@ -1,0 +1,25 @@
+public void jobSearchTest extends Utilitry{
+
+
+
+    @Test (dataProvider = "resultData",dataProviderClass = TestData.class)
+      public void  verifyJobSearchResultUsingDifferentDataSet1(String jobTilte, String Location, String Distance,
+                String salaryMin, String salaryMax, String salaryType, String jobType, String resultMsg) {
+
+
+        homePage.enterJobTitle(jobTilte);
+        homePage.enterLocation(Location);
+        homePage.distanceDropDown(Distance);
+        homePage.moreSearchOptionslink();
+        homePage.enterSalaryMin(salaryMin);
+        homePage.enterSalaryMax(salaryMax);
+        homePage.salaryTypeDropDown(salaryType);
+        homePage.jobTypeDropDown(jobType);
+      }
+
+      @Test
+      public void result1() {
+        resultPage.verifyTheResult("resultMsg");
+      }
+
+      }
